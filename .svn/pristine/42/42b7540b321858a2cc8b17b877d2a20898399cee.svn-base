@@ -1,0 +1,41 @@
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+.el-tabs__nav-scroll{
+	margin-bottom: .1rem;
+}
+.el-tabs__nav-wrap::after{
+	height: .1rem;
+}
+.home .el-tabs__nav-scroll{
+	margin-left: .3rem;
+}
+.home .el-tabs__active-bar{
+	background-color: black;
+}
+.home .el-tabs__item:hover{
+	color: black;
+}
+.home .el-tabs__item.is-active{
+	color: black;
+}
+.uploadrecord .el-tabs__active-bar{
+	background-color: black;
+}
+.uploadrecord .el-tabs__item:hover{
+	color: black;
+}
+.uploadrecord .el-tabs__item.is-active{
+	color: black;
+}
+</style>

@@ -1,0 +1,33 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Registered from '@/pages/Registered'
+import Home from '@/pages/components/Home'
+import Mine from '@/pages/components/PC/Mine'
+import UploadRecord from '@/pages/components/PC/components/UploadRecord'
+Vue.use(Router)
+
+export default new Router({
+	mode:'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Registered',
+      component: Registered
+    },
+    {
+    	path: '/home',
+      name: 'Home',
+      component: Home
+    },
+    {
+    	path: '/mine',
+      name: 'Mine',
+      component: Mine
+    },
+    {
+    	path: '/uploadRecord',
+      name: 'UploadRecord',
+      component: UploadRecord
+    },
+  ]
+})

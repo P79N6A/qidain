@@ -1,0 +1,118 @@
+<template>
+	<div class="memberCenter">
+		<header>
+			<span class="iconfont">&#xe66a;</span>
+			<p>会员中心</p>
+			<span class="iconfont">&#xe747;</span>
+		</header>
+		<div class="personalMsg">
+			<p><img src="../../../assets/logo.png"/></p>
+			<p>姓名</p>
+			<p><span>已申请办卡:2</span><span>审核通过截图:1</span></p>
+		</div>
+		<div class="handle">
+			<router-link to='/uploadRecord'><p class="iconfont">&#xe608;我的上传记录<span class="iconfont">&#xe601;</span></p></router-link>
+			<p class="iconfont">&#xe608;申请成为代理人<span class="iconfont">&#xe601;</span></p>
+		</div>
+		<div class="instructions">
+			<p class="iconfont">&#xe608;办卡须知<span class="iconfont">&#xe601;</span></p>
+			<p class="iconfont">&#xe608;客户电话<span>0731-1002122</span></p>
+		</div>
+		<div class="foot">
+			<el-row>
+				<router-link to='/home'>
+				<el-col :span='12'>
+					<span class="iconfont">&#xe621;<br /><i>首页</i></span>
+				</el-col>
+				</router-link>
+				<el-col :span='12'>
+					<span class="iconfont">&#xe621;<br /><i>我的</i></span>
+				</el-col>
+			</el-row>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default{
+		name:'Mine',
+		
+	}
+</script>
+
+<style scoped>
+	*{
+		font-size: .14rem;
+	}
+	header{
+		display: flex;
+		justify-content: space-between;
+		height: .4rem;
+		color: white;
+		padding: 0 .2rem;
+		line-height: .4rem;
+		border-bottom: 1px solid gainsboro;
+	}
+	header span{
+		font-size: .16rem;
+		color: gray;
+	}
+	header span:last-child{
+		font-size: .22rem;
+	}
+	header p{
+		font-size: .18rem;
+		color: gray;
+	}
+	.personalMsg{
+		text-align: center;
+	}
+	.personalMsg img{
+		height: .6rem;
+		width: .6rem;
+		border-radius: 50%;
+	}
+	.handle p{
+		height: .4rem;
+		padding: 0 .3rem;
+		display: flex;
+		justify-content: space-between;
+		line-height: .4rem;
+		border: 1px solid gainsboro;
+	}
+	.handle p:first-child{
+		margin-top: .3rem;
+		border-bottom: none;
+	}
+	.instructions p{
+		padding: 0 .3rem;
+		display: flex;
+		justify-content: space-between;
+		border: 1px solid gainsboro;
+		height: .4rem;
+		line-height: .4rem;
+	}
+	.instructions p:first-child{
+		margin-top: .3rem;
+		border-bottom: none;
+	}
+	.foot{
+		position: fixed;
+		bottom: 0;
+		background: gainsboro;
+		border-top: 1px solid gray;
+		text-align: center;
+		width: 100%;
+		height: .45rem;
+	}
+	.foot .iconfont{
+		font-size: .20rem;
+		line-height: .20rem;
+		height: .2rem;
+		display: block;
+		padding-top: .05rem;
+	}
+	.foot i{
+		font-style: normal;
+	}
+</style>

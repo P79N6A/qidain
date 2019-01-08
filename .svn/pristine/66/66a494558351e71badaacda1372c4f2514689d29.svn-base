@@ -1,0 +1,205 @@
+<template>
+	<div>
+		<header>
+			<span class="iconfont">&#xe66a;返回</span>
+			<p>会员注册</p>
+			<span class="iconfont">&#xe747;</span>
+		</header>
+		<div class="form">
+			<p><img src="../assets/image/zhuce (1).png"/></p>
+			<div class="formDiv">
+				<label class="iconfont" for="name"><img class="name" src="../assets/image/zhuce (2).png"/><input type="text" name="" id="name" value="" placeholder="请输入姓名" v-model="name" /></label>
+				<p></p>
+				<label class="iconfont" for="phone"><img class="phone"  src="../assets/image/zhuce (4).png"/><input type="text" name="" id="phone" value="" placeholder="请输入手机号码" v-model="telNumber" /></label>
+				<p></p>
+				<label class="iconfont" for="safecode"><img class="safecode" src="../assets/image/zhuce (3).png"/><input type="text" name="" id="safecode" v-model="safeCode" placeholder="短信验证码" /><button @click="getSafeCode">获取验证码</button></label>
+				<p></p>
+				<el-button @click='registered' class='reg'>注册</el-button>
+			</div>
+			<p class="tip">提示:注册成功后,将可以在平台申请办理信用卡</p>
+		</div>
+	</div>
+</template>
+
+<script>
+	import axios from 'axios'
+	import Qs from 'qs'
+	export default{
+		name:'Registered',
+		data(){
+			return{
+				telNumber:'',
+				name:'',
+				safeCode:''
+			}
+		},
+		methods:{
+			registered(){
+//				this.$router.push('/home2')
+//				return
+				//注册完成即将跳转
+				let data1={
+					"mobile":this.telNumber, //手机号（必传）
+					"validate_code":this.safeCode, //验证码（必传）
+				}
+				let data2={
+					"xm":this.name,
+					"mobile":this.telNumber,
+					"code":''
+				}
+				axios({
+					headers:{'Content-Type':'application/x-www-form-urlencoded'},
+					method: 'post',
+					url: 'http://172.16.10.23:8080/Campus2019/smsManage/checkValidateCode',
+					data: Qs.stringify(data1)
+				}).then(res=>{
+					console.log(res.data.error_message)
+					if(res.data.error_code==0){
+						axios({
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							method: 'post',
+							url: 'http://172.16.10.23:8080/Campus2019/wechatManage/addRegistration',
+							data: Qs.stringify(data2)
+						}).then(res=>{
+							console.log(res)
+							this.$router.push('/home2')
+						})
+					}
+				})
+			},
+			getSafeCode(){
+				//获取验证码
+				let data={
+					'mobile':this.telNumber
+				}
+				var reg=/^1[3456789]\d{9}$/;
+		    	if(this.telNumber==''){
+					alert('请输入手机号!')
+		    	}else{
+		    		if(reg.test(this.telNumber)==false){
+		    			alert('请输入11位手机号码!')
+		    		}else{
+		    			axios({
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							method: 'post',
+							url: 'http://172.16.10.23:8080/Campus2019/smsManage/getValidateCode',
+							data: Qs.stringify(data)
+						}).then(res=>{
+//							console.log(res)
+						})
+		    		}
+		    	}
+			}
+		},
+		created(){
+//			this.$router.push('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdccde87d83a87068&redirect_uri=http://jsismm.natappfree.cc/&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect')
+		}
+	}
+</script>
+
+<style scoped>
+	header{
+		display: flex;
+		justify-content: space-between;
+		height: .44rem;
+		color: white;
+		padding: 0 .2rem;
+		background: #1A191F;
+		line-height: .44rem;
+	}
+	header span{
+		font-size: .16rem;
+	}
+	header span:last-child{
+		font-size: .22rem;
+	}
+	header p{
+		margin-left: -.3rem;
+		font-size: .18rem;
+	}
+	.form >p{
+		height: 1.1rem;
+		position: relative;
+		margin: .8rem 0 .7rem 0;
+	}
+	.form >p:last-child{
+		font-size: .14rem;
+		height: 100%;
+		margin: .2rem auto;
+		text-align: center;
+	}
+	.form>p>img{
+		width: .85rem;
+		height: 1.1rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -.425rem;
+	}
+	.formDiv{
+		font-size: .14rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.formDiv p{
+		width: 2.8rem;
+		height: 1px;
+		background: black;
+		margin: 0 auto;
+		font-size: .14rem;
+		text-align: center
+	}
+	.formDiv label{
+		width: 2.8rem;
+		line-height: .38rem;
+		font-size: .2rem;
+		position: relative;
+	}
+	.name{
+		width: .15rem;
+		height: .15rem;
+	}
+	.phone{
+		width: .12rem;
+		height: .17rem;
+	}
+	.safecode{
+		width: .15rem;
+		height: .19rem;
+	}
+	.formDiv input{
+		text-indent: .2rem;
+		width: 2.6rem;
+		border: none;
+		outline: none;
+		color: #666;
+	}
+	.formDiv input::-webkit-input-placeholder{
+		color: #999;
+	}
+	label button{
+		width: .8rem;
+		outline: none;
+		position: absolute;
+		right: 0;
+		top: -.05rem;
+		color: #F8681F;
+		height: .3rem;
+		font-size: .14rem;
+		border: none;
+		background: transparent;
+	}
+	.reg{
+		width: 2.8rem;
+		height: .4rem;
+		line-height: 0rem;
+		margin-top: .42rem;
+		background: #F8681F;
+		color: white;
+		border-radius:.2rem ;
+	}
+	.tip{
+		margin: 0 !important;
+		padding-top: .15rem;
+		font-size: 12px !important;
+	}
+</style>

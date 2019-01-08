@@ -1,0 +1,88 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Registered from '@/pages/Registered'
+import Home2 from '@/pages/components/Home2'
+import Mine from '@/pages/components/PC/Mine'
+import UploadRecord from '@/pages/components/PC/components/UploadRecord'
+import BeAgent from '@/pages/components/PC/components/BeAgent'
+import Agent from '@/pages/components/PC/components/agent/Agent'
+import Integral from '@/pages/components/PC/components/agent/Integral'
+import MemberDetails from '@/pages/components/PC/components/agent/MemberDetails'
+import Members from '@/pages/components/PC/components/agent/Members'
+import MemberUp from '@/pages/components/PC/components/agent/MemberUp'
+import Bonus from '@/pages/components/PC/components/agent/Bonus'
+import MyMsg from '@/pages/components/PC/components/agent/MyMsg'
+import School from '@/pages/components/PC/components/School'
+
+Vue.use(Router)
+
+export default new Router({
+	mode:'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Registered',
+      component: Registered
+    },
+    {
+    	path: '/home2',
+      name: 'Home2',
+      component: Home2
+    },
+    {
+		path: '/mine',
+      name: 'Mine',
+      component: Mine
+    },
+    {
+    	path: '/uploadRecord',
+      name: 'UploadRecord',
+      component: UploadRecord
+    },
+    {
+    	path: '/beAgent',
+      name: 'BeAgent',
+      component: BeAgent
+    },
+    {
+    	path: '/school',
+      name: 'School',
+      component: School
+    },
+    {
+    	path: '/Agent',
+      name: 'Agent',
+      component: Agent
+    },
+    {
+    	path: '/myMsg',
+      name: 'MyMsg',
+      component: MyMsg
+    },
+    {
+    	path: '/integral',
+      name: 'Integral',
+      component: Integral
+    },
+    {
+    	path: '/bonus',
+      name: 'Bonus',
+      component: Bonus
+    },
+    {
+    	path: '/members',
+      name: 'Members',
+      component: Members
+    },
+    {
+    	path: '/memberDetails',
+      name: 'MemberDetails',
+      component: MemberDetails
+    },
+    {
+    	path: '/memberUp',
+      name: 'MemberUp',
+      component: MemberUp
+    },
+  ]
+})

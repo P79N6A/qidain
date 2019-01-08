@@ -1,0 +1,161 @@
+<template>
+	<div class="uploadrecord" >
+		
+		<header>
+			<span class="iconfont">&#xe66a;</span>
+			<p>我的上传记录</p>
+			<span class="iconfont">&#xe747;</span>
+		</header>
+		<div class="tabs">
+			<el-tabs stretch v-model="activeName" @tab-click="handleClick">
+				<el-tab-pane label="待审核" name="first"></el-tab-pane>
+				<el-tab-pane label="待领红包" name="second"></el-tab-pane>
+				<el-tab-pane label="已领红包" name="third"></el-tab-pane>
+			</el-tabs>
+		</div>
+		<div class="wapper" ref='wapper'>
+			<div>
+			<div v-if="activeName=='first'" class="audit">
+				<div class="auditList" v-for="item of 5">
+					<h2>中国银行</h2>
+					<div>
+						<img src="../../../../assets/logo.png"/>
+						<div class="cont">
+							<p>上传截图: <span>银行短信通知截图</span></p>
+							<p>上传时间: <span>2018-12-21 15:30:20</span></p>
+							<p>审核状态: <span>待审核</span></p>
+						</div>
+					</div>
+					<p>审核时间:2018-12-21 15:35:30</p>
+				</div>
+			</div>
+			<div v-if="activeName=='second'">
+				<div class="auditList" v-for="item of 5">
+					<h2>中国银行</h2>
+					<div>
+						<img src="../../../../assets/logo.png"/>
+						<div class="cont">
+							<p>上传截图: <span>银行短信通知截图</span></p>
+							<p>上传时间: <span>2018-12-21 15:30:20</span></p>
+							<p>审核状态: <span>待审核</span></p>
+						</div>
+					</div>
+					<p>审核时间:2018-12-21 15:35:30</p>
+				</div>
+			</div>
+			<div v-if="activeName=='third'">
+				<div class="auditList" v-for="item of 5">
+					<h2>中国银行</h2>
+					<div>
+						<img src="../../../../assets/logo.png"/>
+						<div class="cont">
+							<p>上传截图: <span>银行短信通知截图</span></p>
+							<p>上传时间: <span>2018-12-21 15:30:20</span></p>
+							<p>审核状态: <span>待审核</span></p>
+						</div>
+					</div>
+					<p>审核时间:2018-12-21 15:35:30</p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	import BScroll from 'better-scroll'
+	export default{
+		name:'UploadRecord',
+		data(){
+			return{
+				activeName:'first'
+			}
+		},
+		methods:{
+			handleClick(){
+				
+			}
+		},
+		mounted(){
+			this.scroll= new BScroll (this.$refs.wapper)
+		}
+	}
+</script>
+
+<style scoped>
+	*{
+		font-size: .14rem;
+	}
+	.uploadrecord{
+		width: 100%;
+		height: 100vh;
+		position:absolute;
+		overflow: hidden;
+		z-index: 1;
+	}
+	.wapper{
+		width: 100%;
+		height: 85vh;
+		position:absolute;
+		overflow: hidden;
+		z-index: 1;
+	}
+	header{
+		background: white;
+		display: flex;
+		justify-content: space-between;
+		height: .4rem;
+		color: white;
+		padding: 0 .2rem;
+		line-height: .4rem;
+		border-bottom: 1px solid gainsboro;
+	}
+	header span{
+		font-size: .16rem;
+		color: gray;
+	}
+	header span:last-child{
+		font-size: .22rem;
+	}
+	header p{
+		font-size: .18rem;
+		color: gray;
+	}
+	.tabs{
+		background: white;
+	}
+	.uploadrecord{
+		background: gainsboro;
+	}
+	.auditList{
+		background: white;
+		padding: .15rem;
+		padding-top: 0;
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: .1rem;
+	}
+	.auditList img{
+		width: 1.2rem;
+		height: .85rem;
+		margin-right: .15rem;
+	}
+	.auditList>div{
+		display: flex;
+	}
+	.auditList h2{
+		padding-bottom: .1rem;
+		margin-bottom: .1rem;
+		font-weight: bold;
+		border-bottom: 1px solid gainsboro;
+	}
+	.cont p{
+		line-height: .25rem;
+		height: .25rem;
+	}
+	.audit{
+		background: gainsboro;
+	}
+	.audit >div:not(:first-child){
+		padding-top: .15rem;
+	}
+</style>

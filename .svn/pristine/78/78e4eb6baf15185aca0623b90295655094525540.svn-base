@@ -1,0 +1,114 @@
+<template>
+	<div>
+		<header>
+			<span class="iconfont">&#xe66a;</span>
+			<p>会员注册</p>
+			<span class="iconfont">&#xe747;</span>
+		</header>
+		<div class="form">
+			<p><img src="../assets/image/logo.png"/></p>
+			<form>
+				<p>请输入姓名</p>
+				<label class="iconfont" for="name">&#xe7bd;<input type="" name="" id="name" value="" /></label>
+				<p>请输入手机号码</p>
+				<label class="iconfont" for="phone">&#xe65b;<input type="" name="" id="phone" value="" /></label>
+				<p>短信验证码</p>
+				<label class="iconfont" for="safecode">&#xe563;<input type="" name="" id="safecode" value="" /><button>获取验证码</button></label>
+				<router-link to='/home'>
+					<el-button class='reg'>注册</el-button>
+				</router-link>
+			</form>
+			<p>提示:注册成功后,将可以在平台申请办理信用卡</p>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default{
+		name:'Registered'
+	}
+</script>
+
+<style scoped>
+	header{
+		display: flex;
+		justify-content: space-between;
+		height: .4rem;
+		color: white;
+		padding: 0 .2rem;
+		background: #555555 100%;
+		line-height: .4rem;
+	}
+	header span{
+		font-size: .16rem;
+	}
+	header span:last-child{
+		font-size: .22rem;
+	}
+	header p{
+		font-size: .14rem;
+	}
+	.form >p{
+		height: 1rem;
+		position: relative;
+		margin: .5rem 0;
+	}
+	.form >p:last-child{
+		font-size: .14rem;
+		height: 100%;
+		margin: .2rem auto;
+		text-align: center;
+	}
+	img{
+		width: 1rem;
+		height: 1rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -.5rem;
+	}
+	form{
+		font-size: .14rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+	form p{
+		width: 3rem;
+		margin: .2rem auto;
+		font-size: .14rem;
+		text-align: left
+	}
+	form label{
+		width: 2.8rem;
+		height: .2rem;
+		line-height: .2rem;
+		margin: 0;
+		font-size: .2rem;
+		position: relative;
+		padding-bottom: .1rem;
+		border-bottom: 1px solid gainsboro;
+	}
+	form input{
+		text-indent: .2rem;
+		width: 2.8rem;
+		border: none;
+		outline: none;
+	}
+	label button{
+		width: .8rem;
+		outline: none;
+		border: 1px solid black;
+		position: absolute;
+		right: 0;
+		top: -.05rem;
+		height: .3rem;
+		font-size: .14rem;
+		border-radius: 5px;
+		background: white;
+	}
+	.reg{
+		width: 3rem;
+		height: .3rem;
+		line-height: 0rem;
+		margin-top: .4rem;
+	}
+</style>
